@@ -1,0 +1,26 @@
+<div class="container main-container animated fast fadeIn" *ngIf="pelicula">
+
+  <h1>{{ pelicula.title }}</h1>
+  <div class="row main-container animated fadeIn">
+
+    <div class="col-md-4 main-container">
+      <img class="card-img-top img-fluid " *ngIf="pelicula.poster_path" [src]="pelicula.poster_path | posterPath" [alt]="pelicula.original_title">
+    </div>
+    <div class="col-md-8 text-justify">
+      <h3>Sinopsis</h3>
+      <hr>
+      <p class="card-text" *ngIf="pelicula.overview">{{ pelicula.overview }}</p>
+      <div *ngIf="pelicula.tagline">
+        <h3>Frace</h3>
+        <hr>
+        <p class="card-text" >{{ pelicula.tagline }}</p>
+      </div>
+      <div class="main-container">
+        <h5 *ngIf="pelicula.popularity">Popularidad:  <span class="badge badge-primary">{{ pelicula.popularity | number:'.0-0' }}/10</span></h5>
+        <h5 *ngIf="pelicula.vote_average">Voto promedio:  <span class="badge badge-primary">{{ pelicula.vote_average }}</span></h5>
+      </div>
+      <button type="button" class="btn btn-outline-danger main-container" (click)="volver_pagina()">Regresar</button>
+    </div>
+  </div>
+
+</div>
