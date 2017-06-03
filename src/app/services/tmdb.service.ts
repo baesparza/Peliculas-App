@@ -19,7 +19,16 @@ export class TmdbService {
 
   }
 
-   get_cartelera() {
+  get_populares_kids() {
+
+    let url = `${ this.URLMOVIEDB }/discover/movie?certification_country=US&certification.lte=G&sort_by=popularity.desc&api_key=${ this.API_KEY }&language=es&callback=JSONP_CALLBACK`;
+
+    return this._jsonp.get( url )
+      .map(data => data.json());
+
+  }
+
+  get_cartelera() {
 
     const desde = new Date();
     const hasta = new Date();
@@ -29,6 +38,15 @@ export class TmdbService {
     let hasta_str = `${ hasta.getFullYear() }-${ hasta.getMonth() + 1 }-${ hasta.getDay() }`;
 
     let url = `${ this.URLMOVIEDB }/discover/movie?primary_release_date.gte=${ desde_str }&primary_release_date.lte=${ hasta_str }&api_key=${ this.API_KEY }&language=es&callback=JSONP_CALLBACK`;
+
+    return this._jsonp.get( url )
+      .map(data => data.json());
+
+  }
+
+  buscar_pelicula(texto: string) {
+
+    let url = `${ this.URLMOVIEDB }/search/movie?query=${ texto }&sort_by=popularity.desc&api_key=${ this.API_KEY }&language=es&callback=JSONP_CALLBACK`;
 
     return this._jsonp.get( url )
       .map(data => data.json());
