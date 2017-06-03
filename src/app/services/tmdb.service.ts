@@ -53,4 +53,13 @@ export class TmdbService {
 
   }
 
+  get_pelicula( id: string ) {
+
+    let url = `${ this.URLMOVIEDB }/movie/${ id }?api_key=${ this.API_KEY }&language=es&callback=JSONP_CALLBACK`;
+
+    return this._jsonp.get( url )
+      .map(data => data.json());
+
+  }
+
 }
