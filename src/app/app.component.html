@@ -11,19 +11,17 @@
         <a class="nav-link" [routerLink]="['/home']">Home<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['/search','id']">Link</a>
+        <a class="nav-link" [routerLink]="['/search','']">Link</a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search">
-      <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
+    <form (ngSubmit)="buscarpelicula()" class="form-inline my-2 my-lg-0" [formGroup]="buscar_form_nav">
+      <input class="form-control mr-sm-2" type="text" placeholder="Buscar" (keyup.enter)="buscarpelicula()" formControlName="buscar_input">
+      <button [disabled]="!buscar_form_nav.valid" class="btn btn-primary my-2 my-sm-0" type="submit" (click)="buscarpelicula()">Buscar</button>
     </form>
   </div>
 </nav>
 <!-- /Navbar content -->
 
 <!-- content -->
-<div class="container">
-  <router-outlet></router-outlet>
-</div>
+<router-outlet></router-outlet>
 <!-- /content -->
