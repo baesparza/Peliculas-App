@@ -1,6 +1,6 @@
-<div class="container main-container">
+<div class="container main-container animated fadeIn">
 
-  <form [formGroup]="buscar_form">
+  <form [formGroup]="buscar_form" class="animated fast fadeIn">
     <div class="form-group" >
       <input formControlName="buscar_input"
              type="text" class="form-control" placeholder="Buscar" (keyup.enter)="buscarpelicula()">
@@ -8,15 +8,15 @@
   </form>
   <div *ngIf="peliculas.length >= 0">
 
-    <div class="card-columns" >
+    <div class="card-columns animated fast fadeIn">
       <div class="card card-margin card-shadow" *ngFor="let pelicula of peliculas; let i = index">
         <div appActiveTag>
           <img class="card-img-top img-fluid" *ngIf="pelicula.poster_path" [src]="pelicula.poster_path | posterPath" [alt]="pelicula.original_title">
           <div class="card-block">
             <h4 class="card-title">{{ pelicula.original_title }}</h4>
-            <p class="card-text" *ngIf="pelicula.overview">{{ pelicula.overview | slice:0:171 }}...</p>
+            <p class="card-text" class="text-black" *ngIf="pelicula.overview">{{ pelicula.overview | slice:0:171 }}...</p>
             <p class="card-text"><small class="text-muted">{{ pelicula.release_date | date:'longDate' }}</small></p>
-            <a [routerLink]="['/movie',pelicula.id]" class="btn btn-outline-primary">Learn More...</a>
+            <a [routerLink]="['/movie', buscar, pelicula.id ]" class="btn btn-outline-primary btn-sm btn-block">Learn More...</a>
           </div>
         </div>
       </div>
@@ -29,7 +29,7 @@
     </div>
   </div>
 
-  <div *ngIf="loading">
+  <div *ngIf="loading == (buscar.length > 0)">
     <div class="alert alert-info" role="alert">
       <strong>Cargando...</strong>
     </div>

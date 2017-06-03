@@ -8,15 +8,15 @@ import { Router } from '@angular/router';
   selector: 'app-search',
   templateUrl: './search.component.html',
   styles: [`
-    .main-container{
-      margin-top: 15px;
-    }
     .card-margin{
-      margin-bottom: 10px;
+      margin-bottom: 20px;
     }
     .card-shadow{
       box-shadow: 0 2px 2px rgba(0,0,0,0.24), 0 0 2px rgba(0,0,0,0.12);
       transition: box-shadow .5s;
+    }
+    .text-black{
+      color: #292b2c;
     }
   `]
 })
@@ -31,14 +31,16 @@ export class SearchComponent implements OnInit {
 
   constructor(private _activatedRoute: ActivatedRoute, private _tmdbService: TmdbService, private _router: Router) {
 
+    this.peliculas = [];
+
     this.buscar_form = new FormGroup({
       buscar_input: new FormControl(this.buscar, Validators.required)
     });
 
     this._activatedRoute.params.subscribe(
       params => {
-        // console.log(params.id);
-        this.buscar = params.id;
+        // console.log(params.buscar);
+        this.buscar = params.buscar;
         this.buscar_form.reset({buscar_input: this.buscar});
         this._tmdbService.buscar_pelicula(this.buscar)
           .subscribe(data => {
