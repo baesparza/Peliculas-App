@@ -41,13 +41,15 @@ export class SearchComponent implements OnInit {
       params => {
         // console.log(params.buscar);
         this.buscar = params.buscar;
-        this.buscar_form.reset({buscar_input: this.buscar});
-        this._tmdbService.buscar_pelicula(this.buscar)
-          .subscribe(data => {
-            this.peliculas = data.results;
-            // console.log(this.peliculas);
-            this.loading = false;
-          });
+        if (this.buscar) {
+          this.buscar_form.reset({buscar_input: this.buscar});
+          this._tmdbService.buscar_pelicula(this.buscar)
+            .subscribe(data => {
+              this.peliculas = data.results;
+              // console.log(this.peliculas);
+              this.loading = false;
+            });
+        }
       }
     );
 
