@@ -2,10 +2,12 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './components/home/home.component';
 import { SearchComponent } from './components/search/search.component';
+import { MovieComponent } from './components/movie/movie.component';
 
 const ROUTERS: Routes = [
     { path: 'home', component: HomeComponent },
     { path: 'search/:id', component: SearchComponent },
+    { path: 'movie/:id', component: MovieComponent },
     { path: '**', redirectTo: 'home' }
 ];
 
