@@ -7,7 +7,7 @@ export class BackdropPathPipe implements PipeTransform {
 
   transform(value: string): string {
 
-    let url: string = `http://image.tmdb.org/t/p/w1000${ value }`;
+    let url: string = `http://image.tmdb.org/t/p/w500${ value }`;
 
     return url;
   }
