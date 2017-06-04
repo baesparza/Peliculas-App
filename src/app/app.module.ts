@@ -21,6 +21,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { SearchComponent } from './components/search/search.component';
 import { MovieComponent } from './components/movie/movie.component';
+import { BigTextDirective } from './directives/big-text.directive';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { MovieComponent } from './components/movie/movie.component';
     BackdropPathPipe,
     PosterPathPipe,
     ActiveTagDirective,
-    MovieComponent
+    MovieComponent,
+    BigTextDirective
   ],
   imports: [
     BrowserModule,
