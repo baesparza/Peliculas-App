@@ -1,0 +1,56 @@
+<div class="container">
+  <h1 class="display-3">Peliculas APP</h1>
+  <p class="lead">Esta es una aplicación de películas</p>
+</div>
+
+<div class="container">
+  <br>
+
+  <h1>Cartelera</h1>
+  <hr>
+  
+  <div class="card-columns">
+    <div *ngFor="let cartelera of carteleras">
+      <div class="card card-inverse puntero" *ngIf="cartelera.backdrop_path" [routerLink]="['/movie', 'mhome', cartelera.id ]" appBigText>
+        <img class="card-img img-fluid" [src]="cartelera.backdrop_path | backdropPath" [alt]="cartelera.title">
+        <div class="card-img-overlay">
+          <h4 class="card-title pic-titulo">{{ cartelera.title }}</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <br>
+
+  <h1>Peliculas populares</h1>
+  <hr>
+  
+  <div class="card-columns">
+    <div *ngFor="let popular of populares">
+      <div class="card card-inverse puntero" *ngIf="popular.backdrop_path" [routerLink]="['/movie', 'mhome', popular.id ]" appBigText>
+        <img class="card-img img-fluid" [src]="popular.backdrop_path | backdropPath" [alt]="popular.title">
+        <div class="card-img-overlay">
+          <h4 class="card-title pic-titulo">{{ popular.title }}</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <br>
+
+  <h1>Peliculas populares para los niños</h1>
+  <hr>
+  
+  <div class="card-columns">
+    <div *ngFor="let popular_kids of populares_kids">
+      <div class="card card-inverse puntero" *ngIf="popular_kids.backdrop_path" [routerLink]="['/movie', 'mhome', popular_kids.id ]" appBigText>
+        <img class="card-img img-fluid" [src]="popular_kids.backdrop_path | backdropPath" [alt]="popular_kids.title">
+        <div class="card-img-overlay">
+          <h4 class="card-title pic-titulo">{{ popular_kids.title }}</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
