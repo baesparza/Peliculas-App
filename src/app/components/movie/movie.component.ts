@@ -11,8 +11,10 @@ export class MovieComponent implements OnInit {
 
   pelicula: object;
   ruta: string = '';
+  private loading: boolean = true;
 
   constructor(private _activatedRoute: ActivatedRoute, private _tmdbService: TmdbService, private _router: Router) {
+
 
     this._activatedRoute.params.subscribe(param => {
       // console.log( param );
@@ -21,6 +23,7 @@ export class MovieComponent implements OnInit {
         .subscribe(data => {
           // console.log(data);
           this.pelicula = data;
+          this.loading = false;
         });
     });
 
