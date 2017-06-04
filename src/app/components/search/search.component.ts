@@ -15,8 +15,10 @@ import { Router } from '@angular/router';
       box-shadow: 0 2px 2px rgba(0,0,0,0.24), 0 0 2px rgba(0,0,0,0.12);
       transition: box-shadow .5s;
     }
-    .text-black{
-      color: #292b2c;
+    @media (min-width: 1450px) {
+      .card-columns {
+        column-count: 4;
+      }
     }
   `]
 })
@@ -26,7 +28,7 @@ export class SearchComponent implements OnInit {
   private peliculas: object[] = [];
 
   private loading: boolean = true;
-
+  
   buscar_form: FormGroup;
 
   constructor(private _activatedRoute: ActivatedRoute, private _tmdbService: TmdbService, private _router: Router) {
